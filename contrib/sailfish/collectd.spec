@@ -34,7 +34,7 @@ is written in C for performance. Since the daemon doesn't need to start up
 every time it wants to update the values it's very fast and easy on the
 system.
 
-PackageName: collectd
+PackageName: CollectD
 Custom:
   Repo: https://github.com/rinigus/collectd
 Icon: https://upload.wikimedia.org/wikipedia/commons/6/67/Logo_der_Software_collectd.svg  
