@@ -35,9 +35,13 @@ every time it wants to update the values it's very fast and easy on the
 system.
 
 PackageName: CollectD
+Type: console-application
 Custom:
   Repo: https://github.com/rinigus/collectd
 Icon: https://upload.wikimedia.org/wikipedia/commons/6/67/Logo_der_Software_collectd.svg  
+Categories:
+  - System
+  - Monitor
 
 %package perl
 Summary:	Perl plugin for collectd
