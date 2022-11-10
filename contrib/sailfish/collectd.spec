@@ -309,7 +309,7 @@ mkdir -p %{buildroot}%{_datadir}/collectd/python
 %{__install} -p -m0644 %{SOURCE11} %{buildroot}%{_datadir}/collectd/python
 
 #%{__install} -d %{buildroot}%{_sharedstatedir}/collectd/
-#%{__install} -d %{buildroot}%{_sysconfdir}/collectd.d/
+%{__install} -d %{buildroot}%{_sysconfdir}/collectd.d/
 
 
 ### Clean up docs
@@ -370,6 +370,7 @@ su nemo -c "systemctl --user daemon-reload" || systemctl-user daemon-reload || t
 %files
 #%doc AUTHORS COPYING ChangeLog README
 %config(noreplace) %{_sysconfdir}/collectd.conf
+%dir %{_sysconfdir}/collectd.d
 %{_userunitdir}/collectd.service
 #%{_userunitdir}/collectd2tmpfs.service
 #%{_userunitdir}/collectd2tmpfs.timer
