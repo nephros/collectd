@@ -15,6 +15,7 @@ Source:		http://collectd.org/files/%{name}-%{version}.tar.bz2
 Source1:        collectd.service
 Source2:        collectd.conf
 Source3:        collectd2tmpfs.sh
+Source4:        processes.conf.example
 Source10:       connman.py
 Source11:       ofono.py
 
@@ -300,6 +301,7 @@ rm -rf %{buildroot}
 %{__install} -Dp -m0644 %{SOURCE1} %{buildroot}%{_userunitdir}/collectd.service
 %{__install} -Dp -m0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/collectd.conf
 %{__install} -Dp -m0755 %{SOURCE3} %{buildroot}%{_bindir}/collectd2tmpfs
+%{__install} -Dp -m0644 %{SOURCE4} %{buildroot}%{_sysconfdir}/collectd.d/processes.conf.example
 #%{__install} -Dp -m0644 %{_sourcedir}/collectd2tmpfs.service %{buildroot}%{_userunitdir}/collectd2tmpfs.service
 #%{__install} -Dp -m0644 %{_sourcedir}/collectd2tmpfs.timer %{buildroot}%{_userunitdir}/collectd2tmpfs.timer
 
@@ -309,7 +311,7 @@ mkdir -p %{buildroot}%{_datadir}/collectd/python
 %{__install} -p -m0644 %{SOURCE11} %{buildroot}%{_datadir}/collectd/python
 
 #%{__install} -d %{buildroot}%{_sharedstatedir}/collectd/
-%{__install} -d %{buildroot}%{_sysconfdir}/collectd.d/
+#%{__install} -d %{buildroot}%{_sysconfdir}/collectd.d/
 
 
 ### Clean up docs
@@ -371,6 +373,7 @@ su nemo -c "systemctl --user daemon-reload" || systemctl-user daemon-reload || t
 #%doc AUTHORS COPYING ChangeLog README
 %config(noreplace) %{_sysconfdir}/collectd.conf
 %dir %{_sysconfdir}/collectd.d
+%config %{_sysconfdir}/collectd.d/processes.conf.example
 %{_userunitdir}/collectd.service
 #%{_userunitdir}/collectd2tmpfs.service
 #%{_userunitdir}/collectd2tmpfs.timer
