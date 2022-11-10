@@ -1,0 +1,25 @@
+#
+# example config for process monitoring
+#
+<Plugin processes>
+	# monitor exact process name
+	#
+	#Process "lipstick"
+	#Process "systemd-journald"
+	#Process "systemd-logind"
+	#Process "systemd-udevd"
+
+	# monitor matching processes
+	# use for anything launched through Sailjail, as those apps will have multiple processes
+	# also, allows you to give a pretty name for the collection
+	#
+	#ProcessMatch "Systemdatascope"		"systemdatascope"
+	#ProcessMatch "Fernschreiber"		"harbour-fernschreiber"
+	#
+	#ProcessMatch "systemd_all"		"systemd-.*"
+	#ProcessMatch "fpd"			"(sailfish|encsfa)-fpd"
+	#
+	# Android support: monitor most android system processes
+	#ProcessMatch "com.android"		"com.android.*"
+</Plugin>
+
