@@ -34,9 +34,15 @@ def read():
             prop = m[1]
             online = bool(prop.get('Online', False))
 
+            # modem without SIM does not have this interface:
+            iface_reg = 'org.ofono.NetworkRegistration'
+            ifaces = prop.get('Interfaces')
+            if not iface_reg in ifaces:
+                continue
+
             if online:
                 modem = bus.get_object('org.ofono', mname)
-                modem_prop = modem.GetProperties(dbus_interface = 'org.ofono.NetworkRegistration')
+                modem_prop = modem.GetProperties(dbus_interface = iface_reg)
                 tech = modem_prop.get('Technology', 'unknown')
                 strength = int(modem_prop.get('Strength', 0))
 
